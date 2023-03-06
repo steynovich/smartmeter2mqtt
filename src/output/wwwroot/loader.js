@@ -73,6 +73,10 @@ function updateData(data) {
   $('.totalT1Delivered').text(Math.round(data.totalT1Delivered || 0));
   $('.totalT2Delivered').text(Math.round(data.totalT2Delivered || 0));
 
+  $('.currentUsageL1').text(Math.round(((data.currentUsageL1 || 0) + (data.currentDeliveryL1 || 0)) * 1000));
+  $('.currentUsageL2').text(Math.round(((data.currentUsageL2 || 0) + (data.currentDeliveryL2 || 0)) * 1000));
+  $('.currentUsageL3').text(Math.round(((data.currentUsageL3 || 0) + (data.currentDeliveryL3 || 0)) * 1000));
+
   $('.powerLabel').attr('title', data.powerSn);
   $('.powerTs').text(data.powerTs);
 
