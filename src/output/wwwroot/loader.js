@@ -73,9 +73,38 @@ function updateData(data) {
   $('.totalT1Delivered').text(Math.round(data.totalT1Delivered || 0));
   $('.totalT2Delivered').text(Math.round(data.totalT2Delivered || 0));
 
-  $('.currentUsageL1').text(Math.round(((data.currentUsageL1 || 0) + (data.currentDeliveryL1 || 0)) * 1000));
-  $('.currentUsageL2').text(Math.round(((data.currentUsageL2 || 0) + (data.currentDeliveryL2 || 0)) * 1000));
-  $('.currentUsageL3').text(Math.round(((data.currentUsageL3 || 0) + (data.currentDeliveryL3 || 0)) * 1000));
+  let currentUsageL1 = Math.round(((data.currentUsageL1 || 0) + (data.currentDeliveryL1 || 0) * -1) * 1000);
+  if (currentUsageL1 < 0) {
+    $('.currentUsageL1').text(currentUsageL1 * -1);
+    $('.deliveryL1').show();
+    $('.usageL1').hide();
+  } else {
+    $('.currentUsageL1').text(currentUsageL1);
+    $('.deliveryL1').hide();
+    $('.usageL1').show();
+  }
+
+  let currentUsageL2 = Math.round(((data.currentUsageL2 || 0) + (data.currentDeliveryL2 || 0) * -1) * 1000);
+  if (currentUsageL2 < 0) {
+    $('.currentUsageL2').text(currentUsageL2 * -1);
+    $('.deliveryL2').show();
+    $('.usageL2').hide();
+  } else {
+    $('.currentUsageL2').text(currentUsageL2);
+    $('.deliveryL2').hide();
+    $('.usageL2').show();
+  }
+
+  let currentUsageL3 = Math.round(((data.currentUsageL3 || 0) + (data.currentDeliveryL3 || 0) * -1) * 1000);
+  if (currentUsageL3 < 0) {
+    $('.currentUsageL3').text(currentUsageL3 * -1);
+    $('.deliveryL3').show();
+    $('.usageL3').hide();
+  } else {
+    $('.currentUsageL3').text(currentUsageL3);
+    $('.deliveryL3').hide();
+    $('.usageL3').show();
+  }
 
   $('.powerLabel').attr('title', data.powerSn);
   $('.powerTs').text(data.powerTs);
